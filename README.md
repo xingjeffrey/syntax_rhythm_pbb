@@ -1,7 +1,10 @@
-syntax_rhythm_pbb
+Integrating syntax and rhythm in assessing Australian pied butcherbird song complexity
 ==============================
 
-Edit later
+Insert abstract here later
+
+
+
 
 Project Organization
 ------------
