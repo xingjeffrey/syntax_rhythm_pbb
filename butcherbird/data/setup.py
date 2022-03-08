@@ -6,10 +6,8 @@ import pandas as pd
 import json
 from tqdm.autonotebook import tqdm
 
-from praatio import tgio
+from praatio import textgrid
 
-import librosa
-import wave
 from scipy.io.wavfile import read
 
 
@@ -74,7 +72,7 @@ def tg_to_phrase_note (tg_path_or_obj):
     
     ## if is path, open a textgrid obj, if is already obj do nothing
     if isinstance(tg_path_or_obj, pathlib2.PosixPath):
-        tg_trgt = tgio.openTextgrid(tg_path_or_obj)
+        tg_trgt = textgrid.openTextgrid(tg_path_or_obj, includeEmptyIntervals = False)
     else:
         tg_trgt = tg_path_or_obj
         
@@ -146,8 +144,8 @@ def song_to_df (wav_path, tg_loc):
     ## for every bird/textgrid associated with a wav file
     for tg_bird in tqdm(tg_trgt):
         ## load in proper textgrid object
-        tg_container = tgio.openTextgrid(tg_bird[1])
-        
+        tg_container = textgrid.openTextgrid(tg_bird[1], includeEmptyIntervals = False)
+         
         ## load in textgrid/bird name
         tg_nm = get_file_id(tg_bird[1])
         bird_nm = get_bird_nm(tg_bird[1])
@@ -242,7 +240,7 @@ def wav_to_json (df_cohort, DATASET_ID, DT_ID, wav_path, tg_loc):
     ## add wav info
     json_dict["wav_loc"] = wav_path.__str__()
     json_dict["wav_nm"] = get_file_id(wav_path)
-    json_dict["lengths_s"] = librosa.get_duration(filename = wav_path)
+    json_dict["lengths_s"] = len(read(wav_path)[1])
     json_dict["samplerate_hz"] = get_samplerate(wav_path).__int__()
     
     ## grab appropriate sections of df_cohort0_sum
@@ -298,7 +296,7 @@ def wav_to_json (df_cohort, DATASET_ID, DT_ID, wav_path, tg_loc):
     
     wav_stem = get_file_id(wav_path)
     json_out = (
-        DATA_DIR / "interim" / DATASET_ID / DT_ID / "JSON" / (wav_stem + ".JSON")
+        DATA_DIR / "interim" /DATASET_ID / DT_ID / "JSON" / (wav_stem + ".JSON")
     )
     
     ## save json

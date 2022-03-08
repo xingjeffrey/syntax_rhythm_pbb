@@ -6,7 +6,7 @@ import pandas as pd
 from PIL import Image
 
 from butcherbird.signalprocessing.create_spectrogram_note_dataset import log_resize_spec, pad_spectrogram, flatten_spectrograms
-import butcherbird.utils.semisupervised as semi
+import butcherbird.label.semisupervised as semi
 
 import umap.umap_ as umap
 from avgn.metrics.dtw_mse import build_dtw_mse

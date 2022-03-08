@@ -1,5 +1,3 @@
-## from Tim; initiate useful pathing constants
-
 from pathlib2 import Path
 import pathlib2
 import os
@@ -7,9 +5,8 @@ from datetime import datetime
 import numpy as np
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = PROJECT_DIR / "data"
+DATA_DIR = Path("/mnt/cube/j8xing/syntax_rhythm_pbb/data/")
 FIGURE_DIR = PROJECT_DIR / "figures"
-
 
 def ensure_dir(file_path):
     """ create a safely nested folder

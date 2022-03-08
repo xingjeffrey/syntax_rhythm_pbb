@@ -3,9 +3,9 @@
 import numpy as np
 
 from butcherbird.utils.paths import DATA_DIR, most_recent_subdirectory
-from avgn.signalprocessing.filtering import prepare_mel_matrix
-from avgn.utils.json import read_json
-from butcherbird.utils.hparams import HParams
+from butcherbird.signalprocessing.filtering import prepare_mel_matrix
+from butcherbird.utils.json import read_json
+from butcherbird.data.hparams import HParams
 from tqdm.autonotebook import tqdm
 from joblib import Parallel, delayed
 

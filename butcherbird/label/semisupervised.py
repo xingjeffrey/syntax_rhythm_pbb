@@ -5,7 +5,7 @@ import IPython.display as ipd
 from joblib import Parallel, delayed
 from librosa.util import pad_center
 from tqdm.autonotebook import tqdm
-import butcherbird.utils.label as lb
+import butcherbird.label.label as lb
 
 from sklearn.neighbors import NearestNeighbors
 
