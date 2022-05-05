@@ -7,7 +7,7 @@ This repository contains all the analysis and figures for
 
 Abstract:
 
-    The complex acoustic structure of birdsong supports many conspecific communication functions.
+> The complex acoustic structure of birdsong supports many conspecific communication functions.
 This complexity is often investigated in a syntactic framework, focusing on the statistical features
 of symbolic song sequences. Alternatively, song complexities can be investigated in a rhythmic
 framework focusing on the relative timing patterns across song units, which may complement
