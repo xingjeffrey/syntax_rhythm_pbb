@@ -12,7 +12,7 @@ This complexity is often investigated in a syntactic framework, focusing on the 
 of symbolic song sequences. Alternatively, song complexities can be investigated in a rhythmic
 framework focusing on the relative timing patterns across song units, which may complement
 insights from syntactic analyses. Here, we investigate the merits of combining both frameworks by
-integrating syntactic and rhythmic analyses of Australian pied butcherbird (Cracticus nigrogularis)
+integrating syntactic and rhythmic analyses of Australian pied butcherbird (*Cracticus nigrogularis*)
 songs, which exhibit an organized syntax and diverse rhythms at the note level. We present methods
 for investigating syntactic-rhythmic relations in birdsong, and show that pied butcherbird song
 rhythms are categorically organized and predictable by the first-order sequential syntactic structure of
