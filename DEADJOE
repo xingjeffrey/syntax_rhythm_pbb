@@ -1,0 +1,34 @@
+
+*** These modified files were found in JOE when it aborted on Wed May 18 14:14:52 2022
+*** JOE was aborted by UNIX signal 1
+
+*** File '/home/AD/j8xing/syntax_rhythm_pbb/.git/MERGE_MSG'
+
+sdf
+Merge branch 'main' of https://github.com/xingjeffrey/syntax_rhythm_pbb into main
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+* Build Log *
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/butcherbird/.git/COMMIT_EDITMSG
+/home/AD/j8xing/syntax_rhythm_pbb/.git/MERGE_MSG
+/home/AD/j8xing/syntax_rhythm_pbb/.git/MERGE_MSG
+* Build Log *
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
