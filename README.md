@@ -3,7 +3,7 @@ Syntactic modulation of rhythm in Australian pied butcherbird song
 
 This repository contains all the analysis and figures for
 
-*Syntactic modulation of rhythm in Australian pied butcherbird song.* Jeffrey Xing, Tim Sainburg, Hollis Taylor, Timothy Q. Gentner (In prep)
+*Syntactic modulation of rhythm in Australian pied butcherbird song.* Jeffrey Xing, Tim Sainburg, Hollis Taylor, Timothy Q. Gentner (Submitted)
 
 Abstract:
 
