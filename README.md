@@ -7,24 +7,21 @@ This repository contains all the analysis and figures for
 
 Abstract:
 
-> The complex acoustic structure of birdsong supports many conspecific communication functions.
-This complexity is often investigated in a syntactic framework, focusing on the statistical features
-of symbolic song sequences. Alternatively, song complexities can be investigated in a rhythmic
-framework focusing on the relative timing patterns across song units, which may complement
-insights from syntactic analyses. Here, we investigate the merits of combining both frameworks by
-integrating syntactic and rhythmic analyses of Australian pied butcherbird (*Cracticus nigrogularis*)
-songs, which exhibit an organized syntax and diverse rhythms at the note level. We present methods
-for investigating syntactic-rhythmic relations in birdsong, and show that pied butcherbird song
-rhythms are categorically organized and predictable by the first-order sequential syntactic structure of
-song. These song rhythms remain categorically distributed and strongly associated with first-order
-sequential syntax after controlling for variance in note length, suggesting that the intervals between
-notes are structured in a way that gives rise to a syntactically independent rhythm. We discuss the
-implication of syntactic-rhythmic relations as a relevant feature of song complexity in respect to
-signals such as human speech and music, and advocate for a broader conception of song complexity
-that takes into account syntax, rhythm, and their interaction along with potentially other acoustic and
-perceptual features.
+> The acoustic structure of birdsong is spectrally and temporally complex. Temporal complexity is often
+investigated in a syntactic framework focusing on the statistical features of symbolic song sequences.
+Alternatively, temporal patterns can be investigated in a rhythmic framework that focuses on the
+relative timing between song elements. Here, we investigate the merits of combining both frameworks
+by integrating syntactic and rhythmic analyses of Australian pied butcherbird (Cracticus nigrogularis)
+songs, which exhibit organized syntax and diverse rhythms. We show that pied butcherbird song
+rhythms are categorically organized and predictable by the song’s first-order sequential syntax. These
+song rhythms remain categorically distributed and strongly associated with first-order sequential
+syntax after controlling for variance in note length, suggesting that the intervals between notes are
+structured in a way that gives rise to a syntactically independent rhythm. We discuss the implication
+of syntactic-rhythmic relations as a relevant feature of song complexity with respect to signals such
+as human speech and music, and advocate for a broader conception of song complexity that takes
+into account syntax, rhythm, and their interaction with other acoustic and perceptual features.
 
-Data is available at {DRYAD LINK}
+Data is available at {Zenodo LINK}
 
 
 Project Organization
