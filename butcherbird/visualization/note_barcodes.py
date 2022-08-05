@@ -52,23 +52,25 @@ def indv_barcode(indv_df, time_resolution=0.02, label="labels", pal="tab20"):
     color_lists = []
     
     ## for every recording.... swap to every phrase
-    for phrase in tqdm(indv_df.phrase_nb.unique(), leave=False):
-        # dataframe of wavs
-        wav_df = indv_df[indv_df["phrase_nb"] == phrase]
-        labels = wav_df[label].values
-        start_times = wav_df.note_strt.values - wav_df.note_strt.values[0]
-        stop_times = wav_df.note_end.values - wav_df.note_strt.values[0]
-        start_times[:3], stop_times[:3], labels[:3]
-        trans_list, color_list = song_barcode(
-            start_times,
-            stop_times,
-            labels,
-            label_dict,
-            label_pal_dict,
-            resolution=time_resolution,
-        )
-        color_lists.append(color_list)
-        trans_lists.append(trans_list)
+    for key in indv_df['key'].unique():
+        bout_df = indv_df[indv_df['key'] == key]
+        for phrase in tqdm(bout_df.phrase_nb.unique(), leave=False):
+            # dataframe of wavs
+            wav_df = bout_df[bout_df["phrase_nb"] == phrase]
+            labels = wav_df[label].values
+            start_times = wav_df.note_strt.values - wav_df.note_strt.values[0]
+            stop_times = wav_df.note_end.values - wav_df.note_strt.values[0]
+            start_times[:3], stop_times[:3], labels[:3]
+            trans_list, color_list = song_barcode(
+                start_times,
+                stop_times,
+                labels,
+                label_dict,
+                label_pal_dict,
+                resolution=time_resolution,
+            )
+            color_lists.append(color_list)
+            trans_lists.append(trans_list)
 
         #print(color_lists)
         #print(trans_lists)
