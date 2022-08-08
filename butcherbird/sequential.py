@@ -37,7 +37,7 @@ def transition_matrix(seq_container):
     ## Get all the unique states that the bird can transition from
     ## before you can do that, please unfold the seq_container
     unique_states = np.unique(seq_container)
-    print(unique_states)
+    #print(unique_states)
 
     ## set up transition matrix itself, and fill them with zeros to
     ## indicate that the baseline that no states transitions to each other

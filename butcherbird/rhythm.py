@@ -125,6 +125,8 @@ def hopkins(X):
     #d = len(vars) # columns
     n = len(X) # rows
     m = int(0.1 * n) # heuristic from article [1]
+    if m == 0:
+        m = 1 ## prevent division by 0 errors
     nbrs = NearestNeighbors(n_neighbors=1).fit(X.values)
  
     rand_X = sample(range(0, n, 1), m)
