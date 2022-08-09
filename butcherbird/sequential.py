@@ -197,7 +197,12 @@ def syn_seq_gen(indv_df, label = 'hdbscan_labels', order = 'zero'):
             
             cube_solution = second_order_model[past1][past2]
             
+            ## if cube solution somehow throws an error, use an uniform as a crutch
+            if sum(cube_solution) != 1:
+                cube_solution = np.zeros(len(cube_solution)).fill(1/len(cube_solution))
+            
             current = random.choices(unique_states, cube_solution)[0]
+            
             
             syn.append(current)
             
