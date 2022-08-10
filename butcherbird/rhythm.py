@@ -4,113 +4,123 @@ import scipy.stats
 
 ## This takes the raw onsets and syntactic identities and parses its rhythm
 
-def construct_rhythm_df(onsets, syntactic_units, expected_interval_range):
-    '''
-    This function transforms a list of onsets and list of syntactic units for rhythm analyses
-    '''
+def construct_rhythm_df(indv_df, syntactic_unit):
     
-    ### DISCOVER ALL INTER-ONSET INTERVALS
-    ## Use counter design
-    i = 0
-    intervals = []
+    dyadic_container = []
     
-    ## for every note onset
-    for onset in onsets:
+    ## for each bout
+    bouts = [indv_df[indv_df['key'] == key] for key in np.unique(indv_df['key'].values)]
+    for bout in tqdm(bouts):
         
-        ## if at last note, exit for loop
-        if i == (len(onsets) - 1):
-            continue
-            
-        ## interval = next onset - current onset, add to interval list
-        interval = onsets[i + 1] - onsets[i]
-        intervals.append(interval)
+        ## for each phrase
+        phrases = [bout[bout['phrase_nb'] == phrase_nb] for phrase_nb in np.unique(indv_df['phrase_nb'].values)]
         
-        ## counter up
-        i = i + 1
-        
-    ## Collect intervals into dyadic formation
-    
-    ## interval 1 does not include last interval
-    intervals1 = list(intervals)
-    del(intervals1[-1])
-    
-    ## interval 2 does not include first interval
-    intervals2 = list(intervals)
-    del(intervals2[0])
-    
-    ## Put intervals into datafrmae
-    d = {'intervals1': intervals1, 'intervals2': intervals2}
-    dyadic = pd.DataFrame(data = d)
-    
-    ## back propagate label and spec information
-    
-    ## note identity 1 // Delete last two values
-    labels1 = list(syntactic_units)
-    del(labels1[-1])
-    del(labels1[-1])
-    
-    ## note identity 2 // Delete first and last value
-    labels2 = list(syntactic_units)
-    del(labels2[0])
-    del(labels2[-1])
-    
-    ## note identity 3 // Delete first two values
-    labels3 = list(syntactic_units)
-    del(labels3[0])
-    del(labels3[0])
-    
-    ## fill
-    dyadic['label1'] = labels1
-    dyadic['label2'] = labels2
-    dyadic['label3'] = labels3
-    
-    ## Sort dyadic into short/long interval
-    ### sort all intervals and calculate necessary components
-    s_interval = []
-    l_interval = []
-    cycle_dur = []
-    ratio_custom = []
-    ratio_roeske = []
-    
-    ## for every dyadic
-    for index, row in dyadic.iterrows():
+        for phrase in tqdm(phrases):
+            if len(phrase) < 3: ## phrases with less than 3 notes cannot construct rhythm
+                continue
+            onsets = phrase['note_strt'].values
+            syntactic_units = phrase[syntactic_unit].values
 
-        i1 = row['intervals1']
-        i2 = row['intervals2']
+            ### DISCOVER ALL INTER-ONSET INTERVALS
+            ## Use counter design
+            i = 0
+            intervals = []
 
-        ## short long decider
-        if i1 > i2:
-            s = i2
-            l = i1
-        else:
-            s = i1
-            l = i2
-            
-        ## calculate components
-        s_interval.append(s)
-        l_interval.append(l)
-        cycle_dur.append(s + l)
-        ratio_roeske.append(i1/(i1+i2))
-        ratio_custom.append(s/l)
+            ## for every note onset
+            for onset in onsets:
 
-    ## push into dyadic
-    dyadic['s_interval'] = s_interval
-    dyadic['l_interval'] = l_interval
-    dyadic['cycle_dur'] = cycle_dur
-    dyadic['ratio_roeske'] = ratio_roeske
-    dyadic['ratio_custom'] = ratio_custom
+                ## if at last note, exit for loop
+                if i == (len(onsets) - 1):
+                    continue
+
+                ## interval = next onset - current onset, add to interval list
+                interval = onsets[i + 1] - onsets[i]
+                intervals.append(interval)
+
+                ## counter up
+                i = i + 1
+
+
+            ## Collect intervals into dyadic formation
+
+            ## interval 1 does not include last interval
+            intervals1 = list(intervals)
+            del(intervals1[-1])
+
+            ## interval 2 does not include first interval
+            intervals2 = list(intervals)
+            del(intervals2[0])
+
+            ## Put intervals into datafrmae
+            d = {'intervals1': intervals1, 'intervals2': intervals2}
+            dyadic = pd.DataFrame(data = d)
+
+            ## back propagate label and spec information
+
+            ## note identity 1 // Delete last two values
+            labels1 = list(syntactic_units)
+            del(labels1[-1])
+            del(labels1[-1])
+
+            ## note identity 2 // Delete first and last value
+            labels2 = list(syntactic_units)
+            del(labels2[0])
+            del(labels2[-1])
+
+            ## note identity 3 // Delete first two values
+            labels3 = list(syntactic_units)
+            del(labels3[0])
+            del(labels3[0])
+
+            ## fill
+            dyadic['label1'] = labels1
+            dyadic['label2'] = labels2
+            dyadic['label3'] = labels3
+
+            ## Sort dyadic into short/long interval
+            ### sort all intervals and calculate necessary components
+            s_interval = []
+            l_interval = []
+            cycle_dur = []
+            ratio_custom = []
+            ratio_roeske = []
+
+            ## for every dyadic
+            for index, row in dyadic.iterrows():
+
+                i1 = row['intervals1']
+                i2 = row['intervals2']
+
+                ## short long decider
+                if i1 > i2:
+                    s = i2
+                    l = i1
+                else:
+                    s = i1
+                    l = i2
+
+                ## calculate components
+                s_interval.append(s)
+                l_interval.append(l)
+                cycle_dur.append(s + l)
+                ratio_roeske.append(i1/(i1+i2))
+                ratio_custom.append(s/l)
+
+            ## push into dyadic
+            dyadic['s_interval'] = s_interval
+            dyadic['l_interval'] = l_interval
+            dyadic['cycle_dur'] = cycle_dur
+            dyadic['ratio_roeske'] = ratio_roeske
+            dyadic['ratio_custom'] = ratio_custom
+
+            ## sort ascending by shortest cycle to longest cycle
+            dyadic = dyadic.sort_values(by = ['cycle_dur'])
+
+            ## put cycle rank into data frame
+            dyadic['cycle_rank'] = dyadic['cycle_dur'].rank().astype(int)
+            dyadic_container.append(dyadic)
     
-    ## sort ascending by shortest cycle to longest cycle
-    dyadic = dyadic.sort_values(by = ['cycle_dur'])
-    
-    ## filter out transition between phrases
-    dyadic = dyadic[dyadic['l_interval'] < expected_interval_range[1]]
-    dyadic = dyadic[dyadic['s_interval'] > expected_interval_range[0]]
-    
-    ## put cycle rank into data frame
-    dyadic['cycle_rank'] = dyadic['cycle_dur'].rank().astype(int)
-    
-    return dyadic
+    return pd.concat(dyadic_container).reset_index(drop = True)
 
 from sklearn.neighbors import NearestNeighbors
 from random import sample
