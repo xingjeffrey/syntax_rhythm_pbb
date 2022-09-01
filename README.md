@@ -21,7 +21,7 @@ of syntactic-rhythmic relations as a relevant feature of song complexity with re
 as human speech and music, and advocate for a broader conception of song complexity that takes
 into account syntax, rhythm, and their interaction with other acoustic and perceptual features.
 
-Data is available at {Zenodo LINK}
+Data is available at https://zenodo.org/record/6585884
 
 
 Project Organization
