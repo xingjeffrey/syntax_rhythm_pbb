@@ -5,7 +5,7 @@ This repository contains all the analysis and figures for
 
 *Syntactic modulation of rhythm in Australian pied butcherbird song.* Jeffrey Xing, Tim Sainburg, Hollis Taylor, Timothy Q. Gentner
 
-`@article{xing2022syntactic,
+```@article{xing2022syntactic,
   title={Syntactic modulation of rhythm in Australian pied butcherbird song},
   author={Xing, Jeffrey and Sainburg, Tim and Taylor, Hollis and Gentner, Timothy Q},
   journal={Royal Society Open Science},
@@ -14,7 +14,7 @@ This repository contains all the analysis and figures for
   pages={220704},
   year={2022},
   publisher={The Royal Society}
-}`
+}```
 
 Abstract:
 
